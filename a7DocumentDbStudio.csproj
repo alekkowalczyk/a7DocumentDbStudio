@@ -1,0 +1,495 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{26F2B932-3999-422B-A92C-311D8F04E40B}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>a7DocumentDbStudio</RootNamespace>
+    <AssemblyName>a7DocumentDbStudio</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="a7ExtensionMethods">
+      <HintPath>..\..\a7ExtensionMethods\a7ExtensionMethods\bin\Release\a7ExtensionMethods.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.AvalonEdit, Version=5.0.1.0, Culture=neutral, PublicKeyToken=9cc39be672370310, processorArchitecture=MSIL">
+      <HintPath>packages\AvalonEdit.5.0.2\lib\Net40\ICSharpCode.AvalonEdit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Documents.Client, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Azure.DocumentDB.1.5.0\lib\net40\Microsoft.Azure.Documents.Client.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NSQLFormatter, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\NSQLFormatter.1.0\lib\NSQLFormatter.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PoorMansTSqlFormatterLib35, Version=1.4.3.22897, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\PoorMansTSQLFormatter.1.4.3.1\lib\net35\PoorMansTSqlFormatterLib35.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Controls.Input.Toolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\WPFToolkit.3.5.50211.1\lib\System.Windows.Controls.Input.Toolkit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Layout.Toolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\WPFToolkit.3.5.50211.1\lib\System.Windows.Controls.Layout.Toolkit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WPFToolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\WPFToolkit.3.5.50211.1\lib\WPFToolkit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock, Version=2.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>packages\Extended.Wpf.Toolkit.2.5\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=2.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>packages\Extended.Wpf.Toolkit.2.5\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro, Version=2.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>packages\Extended.Wpf.Toolkit.2.5\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=2.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>packages\Extended.Wpf.Toolkit.2.5\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xceed.Wpf.DataGrid, Version=2.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>packages\Extended.Wpf.Toolkit.2.5\lib\net40\Xceed.Wpf.DataGrid.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit, Version=2.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>packages\Extended.Wpf.Toolkit.2.5\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Controls\a7ComboBox.cs" />
+    <Compile Include="Controls\a7DateTimePicker.cs" />
+    <Compile Include="Controls\a7DateTimeUpDown.cs" />
+    <Compile Include="Controls\a7Wait.xaml.cs">
+      <DependentUpon>a7Wait.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\a7WaitElement.xaml.cs">
+      <DependentUpon>a7WaitElement.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\a7WaitSpinner.cs" />
+    <Compile Include="Controls\a7WaitSpinnerDirection.cs" />
+    <Compile Include="Controls\AddColumnButton.cs" />
+    <Compile Include="Controls\FilterDatePicker.cs" />
+    <Compile Include="Controls\a7OptionButton.cs" />
+    <Compile Include="Controls\a7Popup.cs" />
+    <Compile Include="Controls\CollectionGrid.cs" />
+    <Compile Include="Controls\FilterEditor\FilterEditor.xaml.cs">
+      <DependentUpon>FilterEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FilterEditor\FilterEditorButton.cs" />
+    <Compile Include="Controls\FilterEditor\FilterEditorUtils.cs" />
+    <Compile Include="Controls\FilterEditor\FilterElementDefinition.cs" />
+    <Compile Include="Controls\FilterEditor\FilterElementEditor.xaml.cs">
+      <DependentUpon>FilterElementEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FilterEditor\FilterGroupEditor.xaml.cs">
+      <DependentUpon>FilterGroupEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FilterTextBox.cs" />
+    <Compile Include="Controls\GridColumns\CollectionGridColumn.cs" />
+    <Compile Include="Controls\JsonTree.xaml.cs">
+      <DependentUpon>JsonTree.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PropertySelector.xaml.cs">
+      <DependentUpon>PropertySelector.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PropertySelectorPopup.xaml.cs">
+      <DependentUpon>PropertySelectorPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converters\a7FormattedTextConverter.cs" />
+    <Compile Include="Converters\a7FormattedTextTypeConverter.cs" />
+    <Compile Include="Converters\AddDoubleConverter.cs" />
+    <Compile Include="Converters\BoolToVisibility.cs" />
+    <Compile Include="Converters\BoolToVisibilityReverse.cs" />
+    <Compile Include="Converters\FilterFieldOperatorToShortString.cs" />
+    <Compile Include="Converters\FilterFieldOperatorToString.cs" />
+    <Compile Include="Converters\Json\BoolToJsonSyntaxHighliting.cs" />
+    <Compile Include="Converters\Json\JObjectToChildren.cs" />
+    <Compile Include="Converters\Json\JPropertyValueToString.cs" />
+    <Compile Include="Converters\Json\JPropertyToChildren.cs" />
+    <Compile Include="Converters\Json\JPropertyNameToString.cs" />
+    <Compile Include="Converters\MethodToValueConverter.cs" />
+    <Compile Include="Converters\NegateBool.cs" />
+    <Compile Include="Converters\SwitchConverter.cs" />
+    <Compile Include="Converters\TreeViewItemWidthConverters.cs" />
+    <Compile Include="Converters\ValueConverter.cs" />
+    <Compile Include="Dialogs\ChangeValue.xaml.cs">
+      <DependentUpon>ChangeValue.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\DocumentDialog.xaml.cs">
+      <DependentUpon>DocumentDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\NameSelector.xaml.cs">
+      <DependentUpon>NameSelector.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\SelectPropertyDlg.xaml.cs">
+      <DependentUpon>SelectPropertyDlg.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Enums\FilterFieldOperator.cs" />
+    <Compile Include="Enums\PropertyType.cs" />
+    <Compile Include="Filter\CollectionFilterData.cs" />
+    <Compile Include="Filter\Filter.cs" />
+    <Compile Include="Filter\FilterExpressionData.cs" />
+    <Compile Include="Filter\FltAtomExprData.cs" />
+    <Compile Include="Filter\FltFlatGroupExprData.cs" />
+    <Compile Include="Filter\FltGroupExprData.cs" />
+    <Compile Include="Model\AccountCredentialsModel.cs" />
+    <Compile Include="Model\AccountModel.cs" />
+    <Compile Include="Model\Config\SavedAccountModel.cs" />
+    <Compile Include="Model\CollectionViewModel.cs" />
+    <Compile Include="Model\Config\SavedCollectionModel.cs" />
+    <Compile Include="Model\Config\SavedDatabaseModel.cs" />
+    <Compile Include="Model\DocumentListModel.cs" />
+    <Compile Include="Model\DocumentModel.cs" />
+    <Compile Include="Model\CollectionModel.cs" />
+    <Compile Include="Model\DatabaseModel.cs" />
+    <Compile Include="Model\DocumentDbModelBase.cs" />
+    <Compile Include="Model\PropertyDefinitionModel.cs" />
+    <Compile Include="Model\WhereClauseBuilder.cs" />
+    <Compile Include="Utils\a7BindingHelper.cs" />
+    <Compile Include="Utils\a7DependencyHelper.cs" />
+    <Compile Include="Utils\a7TreeViewHelper.cs" />
+    <Compile Include="Utils\a7UIHelper.cs" />
+    <Compile Include="Utils\AvalonEditBehavior.cs" />
+    <Compile Include="Utils\BraceFoldingStrategy.cs" />
+    <Compile Include="Utils\Config.cs" />
+    <Compile Include="Utils\DependencyObjectExtensionMethods.cs" />
+    <Compile Include="Utils\DocDbExtMethods.cs" />
+    <Compile Include="Utils\EnumerationExtension.cs" />
+    <Compile Include="Utils\ExtensionMethods.cs" />
+    <Compile Include="Utils\JsonUtils.cs" />
+    <Compile Include="Utils\LambdaCommand.cs" />
+    <Compile Include="Utils\PerformanceWatcher.cs" />
+    <Compile Include="Utils\ResourcesManager.cs" />
+    <Compile Include="Utils\StringUtils.cs" />
+    <Compile Include="Utils\XElementNames.cs" />
+    <Compile Include="ViewModel\BaseVM.cs" />
+    <Compile Include="ViewModel\CollectionVM.cs" />
+    <Compile Include="ViewModel\DocumentVM.cs" />
+    <Compile Include="ViewModel\ExplorerVM.cs" />
+    <Compile Include="ViewModel\Explorer\AccountExpItemVM.cs" />
+    <Compile Include="ViewModel\Explorer\CollectionExpItemVM.cs" />
+    <Compile Include="ViewModel\ContextMenuItemVM.cs" />
+    <Compile Include="ViewModel\Explorer\DatabaseExpItemVM.cs" />
+    <Compile Include="ViewModel\Explorer\DummyExpItemVM.cs" />
+    <Compile Include="ViewModel\Explorer\ExpItemType.cs" />
+    <Compile Include="ViewModel\Explorer\ExplorerItemBaseVM.cs" />
+    <Compile Include="ViewModel\MainVM.cs" />
+    <Compile Include="ViewModel\Workspace\CollectionWrkspcVM.cs" />
+    <Compile Include="ViewModel\Workspace\HomeWrkspcVM.cs" />
+    <Compile Include="ViewModel\WrkspcBaseVM.cs" />
+    <Compile Include="Views\Document.xaml.cs">
+      <DependentUpon>Document.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Explorer.xaml.cs">
+      <DependentUpon>Explorer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Workspaces\Collection.xaml.cs">
+      <DependentUpon>Collection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Workspaces\Home.xaml.cs">
+      <DependentUpon>Home.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Controls\a7Wait.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\a7WaitElement.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\FilterEditor\FilterEditor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\FilterEditor\FilterElementEditor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\FilterEditor\FilterGroupEditor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\JsonTree.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\PropertySelector.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\PropertySelectorPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\ChangeValue.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\DocDbAccountCredentialsDlg.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\DocumentDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\NameSelector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\SelectPropertyDlg.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Dialogs\DocDbAccountCredentialsDlg.xaml.cs">
+      <DependentUpon>DocDbAccountCredentialsDlg.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Styles\ButtonsTemplates.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\CollectionGridTemplates.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\ComboBoxTemplates.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\CommonBrushes.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\DatePickerStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\DateTimePickerStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\AddColumnButtonTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\FilterButtonTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\FilterDatePickerTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\FilterTextBoxTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\ListBoxTemplates.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Templates.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\TextBoxes.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\TreeViewStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\WaitSpinner.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Document.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Explorer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Workspaces\Collection.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Workspaces\Home.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Model\ConfigModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <None Include="README.md" />
+    <EmbeddedResource Include="Resources\avalonEditSql.xshd" />
+    <EmbeddedResource Include="Resources\avalonEditJson.xshd" />
+    <EmbeddedResource Include="Resources\avalonEditJsonReadOnly.xshd" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\a7.ico" />
+    <Resource Include="Images\calculate.png" />
+    <Resource Include="Images\calendar.png" />
+    <Resource Include="Images\dropDownClose.png" />
+    <Resource Include="Images\dropDownCloseDimm.png" />
+    <Resource Include="Images\dropDownOpen.png" />
+    <Resource Include="Images\dropDownOpenDimm.png" />
+    <Resource Include="Images\filter.png" />
+    <Resource Include="Images\green_right.png" />
+    <Resource Include="Images\logoRightBottom.png" />
+    <Resource Include="Images\notePin.png" />
+    <Resource Include="Images\search.png" />
+    <Resource Include="Images\small_add.png" />
+    <Resource Include="Images\small_cancel.png" />
+    <Resource Include="Images\small_doubleLeft.png" />
+    <Resource Include="Images\small_doubleRight.png" />
+    <Resource Include="Images\small_form.png" />
+    <Resource Include="Images\small_left.png" />
+    <Resource Include="Images\small_ok.png" />
+    <Resource Include="Images\small_right.png" />
+    <Resource Include="Images\vsplit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\view.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\collection.png" />
+    <Resource Include="Images\collectionView.png" />
+    <Resource Include="Images\connect.png" />
+    <Resource Include="Images\database.png" />
+    <Resource Include="Images\disconnect.png" />
+    <Resource Include="Images\docDbAccount.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\docDbAccountBroken.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="LICENCE.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

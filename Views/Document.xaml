@@ -1,0 +1,93 @@
+﻿<UserControl x:Class="a7DocumentDbStudio.Views.Document"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:a7DocumentDbStudio.Views"
+             xmlns:c="clr-namespace:a7DocumentDbStudio.Controls"
+             xmlns:cv="clr-namespace:a7DocumentDbStudio.Converters"
+             xmlns:cvj="clr-namespace:a7DocumentDbStudio.Converters.Json"
+              xmlns:a="http://icsharpcode.net/sharpdevelop/avalonedit"
+             xmlns:u="clr-namespace:a7DocumentDbStudio.Utils"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+            mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Styles/ButtonsTemplates.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+            <cv:NegateBool x:Key="nb"></cv:NegateBool>
+            <cv:BoolToVisibility x:Key="bv"></cv:BoolToVisibility>
+            <cv:BoolToVisibilityReverse x:Key="bvn"></cv:BoolToVisibilityReverse>
+            <cvj:BoolToJsonSyntaxHighliting x:Key="bsh"></cvj:BoolToJsonSyntaxHighliting>
+            <Style TargetType="Button">
+                <Setter Property="Template" Value="{StaticResource BasicButtonTemplate}"></Setter>
+            </Style>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <TabControl>
+            <TabItem Header="Tree" IsSelected="True">
+                <c:JsonTree JToken="{Binding JToken}" Document="{Binding}"></c:JsonTree>
+            </TabItem>
+            <TabItem Header="Text/Edit">
+                <DockPanel>
+                    <DockPanel DockPanel.Dock="Top" Height="18">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                            <Button Height="18" Width="50" Margin="0" Visibility="{Binding IsEditMode, Converter={StaticResource bvn}}" Command="{Binding EditCommand}" HorizontalAlignment="Right">
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <Image Source="../Images/edit.png" Width="10" Height="10" Margin="0,0,4,0"></Image>
+                                    <TextBlock>Edit</TextBlock>
+                                </StackPanel>
+                            </Button>
+                            <Button Height="18" Width="55" Margin="0" Visibility="{Binding IsEditMode, Converter={StaticResource bv}}" Command="{Binding CancelCommand}" HorizontalAlignment="Right">
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <Image Source="../Images/small_cancel.png" Width="16" Height="16" Margin="0,0,4,0"></Image>
+                                    <TextBlock>Cancel</TextBlock>
+                                </StackPanel>
+                            </Button>
+                            <Separator  Margin="4,0,4,0" Foreground="Aqua" Width="2"  Height="9"></Separator>
+                            <Button Height="18" Width="50" Margin="0" Visibility="{Binding IsEditMode, Converter={StaticResource bv}}" Command="{Binding SaveCommand}" HorizontalAlignment="Right">
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <Image Source="../Images/save.png" Width="12" Height="12" Margin="0,0,4,0"
+                                           RenderOptions.BitmapScalingMode="NearestNeighbor"
+                                            RenderOptions.EdgeMode="Aliased"
+                                           ></Image>
+                                    <TextBlock>Save</TextBlock>
+                                </StackPanel>
+                            </Button>
+                            
+                            <Button Height="18" Width="50" Margin="0" Visibility="{Binding IsEditMode, Converter={StaticResource bvn}}" 
+                                    ToolTip="Create document based on this"
+                                    Command="{Binding CloneCommand}" HorizontalAlignment="Right">
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <Image Source="../Images/small_add.png" Width="16" Height="16" Margin="0,0,4,0"></Image>
+                                    <TextBlock>Clone</TextBlock>
+                                </StackPanel>
+                            </Button>
+                            <Separator  Margin="4,0,4,0" Foreground="Aqua" Width="2"  Height="9"></Separator>
+                            <Button Height="18" Width="55" Margin="0" Visibility="{Binding IsEditMode, Converter={StaticResource bvn}}" 
+                                    Command="{Binding DeleteCommand}" HorizontalAlignment="Right">
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <Image Source="../Images/small_cancel.png" Width="16" Height="16" Margin="0,0,4,0"></Image>
+                                    <TextBlock>Delete</TextBlock>
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                    </DockPanel>
+                    <a:TextEditor x:Name="jsonEditor" Grid.Row="0" Grid.Column="2" IsReadOnly="{Binding IsEditMode, Converter={StaticResource nb}}" VerticalScrollBarVisibility="Auto"
+                                  SyntaxHighlighting="{Binding IsEditMode, Converter={StaticResource bsh}}" HorizontalScrollBarVisibility="Auto"
+                                  VerticalAlignment="Stretch"
+                                  IsEnabled="{Binding IsBusy, Converter={StaticResource nb}}"
+                                  >
+                        <i:Interaction.Behaviors>
+                            <u:AvalonEditBehaviour GiveMeTheText="{Binding Stringified, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        </i:Interaction.Behaviors>
+                    </a:TextEditor>
+                </DockPanel>
+            </TabItem>
+        </TabControl>
+        
+    </Grid>
+</UserControl>

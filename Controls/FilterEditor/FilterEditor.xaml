@@ -1,0 +1,90 @@
+﻿<UserControl x:Class="a7DocumentDbStudio.Controls.FilterEditor.FilterEditor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:a7="clr-namespace:a7DocumentDbStudio.Controls.FilterEditor"
+             xmlns:a7c="clr-namespace:a7DocumentDbStudio.Controls"
+             xmlns:a7u="clr-namespace:a7DocumentDbStudio.Utils"
+             mc:Ignorable="d" 
+             x:Name="me"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../../Styles/CommonBrushes.xaml"/>
+                <ResourceDictionary Source="../../Styles/ButtonsTemplates.xaml"/>
+                <ResourceDictionary Source="../../Styles/ListBoxTemplates.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Border Effect="{StaticResource OrangeShadowEffect}" BorderBrush="{StaticResource OrangeBrush}" BorderThickness="1" Margin="2" x:Name="MyBorder" 
+                Visibility="Collapsed">
+        </Border>
+        <Grid x:Name="mainGrid" Margin="3" Background="Transparent">
+
+        </Grid>
+        <StackPanel x:Name="spButtons" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="3"
+                    Visibility="Collapsed"
+                 >
+            <Button  x:Name="bOk"  Template="{StaticResource PopupButtonTemplate}" Height="16" BorderBrush="{StaticResource OrangeBrush}"
+                     Background="Transparent" BorderThickness="1,1,1,0"
+                        Click="bOk_Click" ToolTip="Select" Margin="3,0,1,1" Padding="0,0,3,0"  >
+                <StackPanel Orientation="Horizontal" Margin="0">
+                    <Image Source="../../Images/small_ok.png" HorizontalAlignment="Right" Width="15" Height="15" VerticalAlignment="Center" ></Image>
+                    <Label FontSize="10" Padding="0" Foreground="Gray" Margin="0,0,3,0">Select</Label>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+        <Grid x:Name="gStartPanel">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <a7c:PropertySelectorPopup    x:Name="propertySelector" 
+                                     Grid.Row="1" Grid.Column="0"
+                                                 Properties="{Binding Elements, ElementName=me}"
+                                                BorderBrush="{StaticResource DarkBorderBrush}"
+                                                 MinWidth="{Binding Path=ActualWidth,Mode=OneWay,RelativeSource={RelativeSource TemplatedParent}}"
+                                                SelectClicked="propertySelector_SelectClicked"
+                                             ></a7c:PropertySelectorPopup>
+            <!--<ListBox x:Name="lbFields"
+                                    Grid.Row="1" Grid.Column="0"
+                                    BorderBrush="{StaticResource DarkBorderBrush}"
+                                    ItemsSource="{Binding Elements, ElementName=me}" 
+                                    Margin="3"
+                                    DisplayMemberPath="Caption" Template="{StaticResource ListBoxTemplate}"
+                                    MouseUp="lbFields_MouseUp">
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="{x:Type ListBoxItem}">
+                        <Setter Property="Template" Value="{StaticResource ListBoxItemTemplate}" />
+                    </Style>
+                </ListBox.ItemContainerStyle>
+            </ListBox>-->
+
+            <!--<Label x:Name="lRelationsLabel"
+                   Background="White" Margin="3,3,3,5" Height="20" Padding="2" Content="{a7u:a7T tRelationsColon}" 
+                   BorderBrush="{StaticResource DarkBorderBrush}" Grid.Row="0" Grid.Column="1"
+                   BorderThickness="1"></Label>
+            <ListBox x:Name="lbRelations"
+                                    Grid.Row="1" Grid.Column="1"
+                                    BorderBrush="{StaticResource DarkBorderBrush}"
+                                    ItemsSource="{Binding Relations, ElementName=me}" 
+                                    Margin="3"
+                                    SelectedValuePath="Id" DisplayMemberPath="Caption" Template="{StaticResource ListBoxTemplate}"
+                                    MouseUp="lbRelations_MouseUp"
+                                    >
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="{x:Type ListBoxItem}">
+                        <Setter Property="Template" Value="{StaticResource ListBoxItemTemplate}"/>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+            </ListBox>-->
+        </Grid>
+    </Grid>
+</UserControl>

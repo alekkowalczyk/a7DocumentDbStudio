@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="a7DocumentDbStudio.Controls.a7WaitElement" 
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             x:Name="me"
+             mc:Ignorable="d" d:DesignHeight="6" d:DesignWidth="900" >
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Styles/CommonBrushes.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+        </Grid.ColumnDefinitions>
+        <Grid x:Name="Rectangle" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left">
+            <Grid.Triggers>
+                <EventTrigger RoutedEvent="Grid.Loaded">
+                    <BeginStoryboard>
+                        <Storyboard RepeatBehavior="Forever" x:Name="sb">
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="Rectangle">
+                                <EasingDoubleKeyFrame x:Name="KeyFrame1" KeyTime="0" Value="-10"/>
+                                <EasingDoubleKeyFrame x:Name="KeyFrame2" KeyTime="0:0:1" Value="330"/>
+                                <EasingDoubleKeyFrame x:Name="KeyFrame3" KeyTime="0:0:4" Value="660"/>
+                                <EasingDoubleKeyFrame x:Name="KeyFrame4" KeyTime="0:0:5" Value="1000"/>
+                                <EasingDoubleKeyFrame x:Name="KeyFrame5" KeyTime="0:0:6" Value="1000"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Grid.Triggers>
+            <Grid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Grid.RenderTransform>
+            <!--<Rectangle  Fill="#3D8FDE" Height="3" Width="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+             </Rectangle>-->
+            <Rectangle  Fill="{StaticResource OrangeBrush}" Height="4" Width="3" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Grid>
+    </Grid>
+</UserControl>

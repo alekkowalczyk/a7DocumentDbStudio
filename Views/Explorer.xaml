@@ -1,0 +1,80 @@
+﻿<UserControl x:Class="a7DocumentDbStudio.Views.Explorer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:a7DocumentDbStudio.Views"
+             xmlns:cv="clr-namespace:a7DocumentDbStudio.Converters"
+             xmlns:ct="clr-namespace:a7DocumentDbStudio.Controls"
+             xmlns:vm="clr-namespace:a7DocumentDbStudio.ViewModel"  
+             xmlns:vmExp="clr-namespace:a7DocumentDbStudio.ViewModel.Explorer"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Styles/TreeViewStyles.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+            <cv:SwitchConverter x:Key="itemImage">
+                <cv:SwitchConverterCase When="Account" Then="../Images/docDbAccount.png"></cv:SwitchConverterCase>
+                <cv:SwitchConverterCase When="BrokenAccount" Then="../Images/docDbAccountBroken.png"></cv:SwitchConverterCase>
+                <cv:SwitchConverterCase When="Database" Then="../Images/database.png"></cv:SwitchConverterCase>
+                <cv:SwitchConverterCase When="Collection" Then="../Images/collection.png"></cv:SwitchConverterCase>
+                <cv:SwitchConverterCase When="CollectionView" Then="../Images/collectionView.png"></cv:SwitchConverterCase>
+            </cv:SwitchConverter>
+            <cv:BoolToVisibility x:Key="bv"></cv:BoolToVisibility>
+            <cv:TreeViewItemWidthSumConverter x:Key="treeSum"></cv:TreeViewItemWidthSumConverter>
+            <cv:TreeViewItemWidthParentCountConverter x:Key="treeParent"></cv:TreeViewItemWidthParentCountConverter>
+            <HierarchicalDataTemplate DataType="{x:Type vmExp:ExplorerItemBaseVM}" ItemsSource="{Binding Children}">
+                <Grid HorizontalAlignment="Stretch">
+                    <Grid.Width>
+                        <MultiBinding Converter="{StaticResource treeSum}">
+                            <Binding RelativeSource="{RelativeSource FindAncestor, AncestorType=ScrollContentPresenter, AncestorLevel=1}" Path="ActualWidth" />
+                            <Binding RelativeSource="{RelativeSource FindAncestor, AncestorType=TreeViewItem, AncestorLevel=1}" Converter="{StaticResource treeParent}" />
+                        </MultiBinding>
+                    </Grid.Width>
+                    <Grid.ContextMenu>
+                        <ContextMenu ItemsSource="{Binding ContextMenuItems}">
+                            <ContextMenu.Resources>
+                                <DataTemplate DataType="{x:Type vm:MenuItemVM}">
+                                    <TextBlock Text="{Binding Caption}"></TextBlock>
+                                </DataTemplate>
+                            </ContextMenu.Resources>
+                            <ContextMenu.ItemContainerStyle>
+                                <Style TargetType="MenuItem">
+                                    <Setter Property="Command" Value="{Binding Command}" />
+                                </Style>
+                            </ContextMenu.ItemContainerStyle>
+                        </ContextMenu>
+                    </Grid.ContextMenu>
+                    <ct:a7Wait VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Visibility="{Binding IsBusy, Converter={StaticResource bv}}"></ct:a7Wait>
+                    <DockPanel HorizontalAlignment="Stretch">
+                        <Image DockPanel.Dock="Left" Source="{Binding Type, Converter={StaticResource itemImage}}" Width="12" Height="12"></Image>
+                        <TextBlock Text="{Binding Caption}" HorizontalAlignment="Stretch" ></TextBlock>
+                    </DockPanel>
+                </Grid>
+            </HierarchicalDataTemplate>
+            <!-- Brushes for the selected item -->
+            <LinearGradientBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" EndPoint="0,1" StartPoint="0,0">
+                <GradientStop Color="#FFDCEBFC" Offset="0"/>
+                <GradientStop Color="#FFC1DBFC" Offset="1"/>
+            </LinearGradientBrush>
+            <LinearGradientBrush x:Key="{x:Static SystemColors.ControlBrushKey}" EndPoint="0,1" StartPoint="0,0">
+                <GradientStop Color="#FFDCEBFC" Offset="0"/>
+                <GradientStop Color="#FFC1DBFC" Offset="1"/>
+            </LinearGradientBrush>
+            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black" />
+            <SolidColorBrush x:Key="{x:Static SystemColors.ControlTextBrushKey}" Color="Black" />
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <TreeView ItemsSource="{Binding RootItems}" ItemContainerStyle="{StaticResource a7TreeViewItemStyle}" BorderThickness="0">
+        <TreeView.Resources>
+            <Style TargetType="{x:Type TreeViewItem}">
+                <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}">
+                </Setter>
+                <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}">
+                </Setter>
+            </Style>
+        </TreeView.Resources>
+    </TreeView>
+</UserControl>

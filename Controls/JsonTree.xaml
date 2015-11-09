@@ -1,0 +1,76 @@
+﻿<UserControl x:Class="a7DocumentDbStudio.Controls.JsonTree"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:w="clr-namespace:a7DocumentDbStudio.Converters"
+    xmlns:json ="clr-namespace:Newtonsoft.Json;assembly=Newtonsoft.Json"
+    xmlns:jlinq ="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json"
+    xmlns:jc="clr-namespace:a7DocumentDbStudio.Converters.Json"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    mc:Ignorable="d" 
+    x:Name="me"
+    d:DesignHeight="1000" d:DesignWidth="600">
+    <UserControl.Resources>
+        <jc:JObjectToChildren x:Key="JObjectToChildren"></jc:JObjectToChildren>
+        <jc:JPropertyToChildren x:Key="JPropertyToChildren"></jc:JPropertyToChildren>
+        <jc:JPropertyNameToString x:Key="JPropertyNameToString"></jc:JPropertyNameToString>
+        <jc:JPropertyValueToString x:Key="JPropertyValueToString"></jc:JPropertyValueToString>
+        <w:MethodToValueConverter x:Key="MethodToValueConverter"/>
+        <!--<HierarchicalDataTemplate DataType="{x:Type jlinq:JArray}" ItemsSource="{Binding Converter={StaticResource MethodToValueConverter}, ConverterParameter='Children'}">
+            <TextBlock Text="Array">
+            </TextBlock>
+        </HierarchicalDataTemplate>-->
+        <HierarchicalDataTemplate DataType="{x:Type jlinq:JProperty}" ItemsSource="{Binding Converter={StaticResource JPropertyToChildren}}">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Add field to grid" 
+                                  Command="{Binding Document.SourceCollection.AddColumnFromJPropertyCommand, Source={x:Reference me}}" 
+                                  CommandParameter="{Binding}"></MenuItem>
+                        <Separator>
+                        </Separator>
+                        <MenuItem Header="Edit value" 
+                                  Command="{Binding Document.EditValueFromJPropertyCommand, Source={x:Reference me}}" 
+                                  CommandParameter="{Binding}"></MenuItem>
+                        <Separator></Separator>
+                        <MenuItem Header="Copy value" 
+                                  Command="{Binding Document.CopyValueFromJPropertyCommand, Source={x:Reference me}}" 
+                                  CommandParameter="{Binding}"></MenuItem>
+                        <MenuItem Header="Copy name" 
+                                  Command="{Binding Document.CopyNameFromJPropertyCommand, Source={x:Reference me}}" 
+                                  CommandParameter="{Binding}"></MenuItem>
+                    </ContextMenu>
+                </StackPanel.ContextMenu>
+                <TextBlock Foreground="Blue" Text="{Binding Converter={StaticResource JPropertyNameToString}}"/>
+                <TextBlock Foreground="Blue" Text=":"/>
+                <TextBlock FontWeight="Bold" Text="{Binding Converter={StaticResource JPropertyValueToString}}"/>
+            </StackPanel>
+        </HierarchicalDataTemplate>
+        <HierarchicalDataTemplate DataType="{x:Type jlinq:JObject}" ItemsSource="{Binding Converter={StaticResource JObjectToChildren}}">
+            <TextBlock Text="{Binding Path=Path}"></TextBlock>
+        </HierarchicalDataTemplate>
+        <!--<HierarchicalDataTemplate DataType="{x:Type jlinq:JConstructor}" ItemsSource="{Binding Converter={StaticResource MethodToValueConverter}, ConverterParameter='Children'}">
+            <TextBlock Text="Constructor">
+            </TextBlock>
+        </HierarchicalDataTemplate>
+        <HierarchicalDataTemplate DataType="{x:Type jlinq:JRaw}" ItemsSource="{Binding Converter={StaticResource MethodToValueConverter}, ConverterParameter='Children'}">
+            <TextBlock Text="Raw">
+            </TextBlock>
+        </HierarchicalDataTemplate>-->
+        <!--<DataTemplate DataType="{x:Type jlinq:JValue}">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Value: "/>
+                <TextBox Text="{Binding Path=Value, Mode=TwoWay}"/>
+            </StackPanel>
+        </DataTemplate>-->
+    </UserControl.Resources>
+    <Grid>
+        <TreeView Margin="3" Name="treeView1"  VirtualizingStackPanel.IsVirtualizing="True">
+            <TreeView.ItemContainerStyle>
+                <Style TargetType="{x:Type TreeViewItem}">
+                    <Setter Property="IsExpanded" Value="True" />
+                </Style>
+            </TreeView.ItemContainerStyle>
+        </TreeView>
+    </Grid>
+</UserControl>

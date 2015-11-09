@@ -1,0 +1,21 @@
+﻿<Application x:Class="a7DocumentDbStudio.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:a7DocumentDbStudio"
+             xmlns:vmWrksp="clr-namespace:a7DocumentDbStudio.ViewModel.Workspace"
+             xmlns:vm="clr-namespace:a7DocumentDbStudio.ViewModel"
+             xmlns:vWrksp="clr-namespace:a7DocumentDbStudio.Views.Workspaces"
+             xmlns:v="clr-namespace:a7DocumentDbStudio.Views"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <DataTemplate DataType="{x:Type vmWrksp:CollectionWrkspcVM}">
+            <vWrksp:Collection></vWrksp:Collection>
+            </DataTemplate>
+        <DataTemplate DataType="{x:Type vmWrksp:HomeWrkspcVM}">
+            <vWrksp:Home></vWrksp:Home>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:DocumentVM}">
+            <v:Document></v:Document>
+        </DataTemplate>
+    </Application.Resources>
+</Application>

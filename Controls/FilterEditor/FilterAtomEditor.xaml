@@ -1,0 +1,11 @@
+﻿<UserControl x:Class="a7DocumentDbStudio.Controls.FilterEditor.FilterAtomEditor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="35" d:DesignWidth="300">
+    <StackPanel x:Name="spMain"  Margin="5">
+        <Label x:Name="lCaption" Margin="0" Padding="0">ds</Label>
+    </StackPanel>
+</UserControl>

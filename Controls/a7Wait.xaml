@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="a7DocumentDbStudio.Controls.a7Wait"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:a7="clr-namespace:a7DocumentDbStudio.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <a7:a7WaitElement x:Name="Element1" OffsetSeconds="0.0"/>
+        <a7:a7WaitElement x:Name="Element2" OffsetSeconds="0.2"/>
+        <a7:a7WaitElement x:Name="Element3" OffsetSeconds="0.4"/>
+        <a7:a7WaitElement x:Name="Element4" OffsetSeconds="0.6"/>
+        <a7:a7WaitElement x:Name="Element5" OffsetSeconds="0.8"/>
+    </Grid>
+</UserControl>

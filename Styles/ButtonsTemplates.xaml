@@ -1,0 +1,190 @@
+﻿<ResourceDictionary
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:my="clr-namespace:a7DocumentDbStudio.Controls"
+    xmlns:conv="clr-namespace:a7DocumentDbStudio.Converters"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="CommonBrushes.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <ControlTemplate x:Key="ButtonTemplate" TargetType="{x:Type Button}">
+        <Border
+                    x:Name="Border"
+	                BorderBrush="{TemplateBinding BorderBrush}"
+                    Background="{TemplateBinding Background}"
+	                BorderThickness="{TemplateBinding BorderThickness}"
+                    HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                    Padding="{TemplateBinding Padding}" 
+                    Height="{TemplateBinding Height}"
+                    Width="{TemplateBinding Width}"
+                    Margin="{TemplateBinding Margin}">
+            <ContentPresenter Margin="0" Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalAlignment}"></ContentPresenter>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="Button.IsMouseOver" Value="true">
+                <Setter TargetName="Border" Property="Background" Value="{StaticResource IsOverBackgroundBrush}" />
+                <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource IsOverBorderBrush}" />
+            </Trigger>
+            <Trigger Property="Button.IsPressed" Value="true">
+                <Setter TargetName="Border" Property="Background" Value="{StaticResource IsSelectedBackgroundBrush}" />
+                <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource IsSelectedBorderBrush}" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="SimpleButtonTemplate" TargetType="{x:Type Button}">
+        <Border
+                    x:Name="Border"
+	                BorderBrush="{TemplateBinding BorderBrush}"
+                    Background="{TemplateBinding Background}"
+	                BorderThickness="{TemplateBinding BorderThickness}"
+                    HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                    Padding="{TemplateBinding Padding}" 
+                    Height="{TemplateBinding Height}"
+                    Width="{TemplateBinding Width}"
+                    Margin="{TemplateBinding Margin}">
+            <ContentPresenter Margin="0" Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalAlignment}"></ContentPresenter>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="Button.IsMouseOver" Value="true">
+                <Setter TargetName="Border" Property="Background" Value="{StaticResource IsOverBackgroundBrush}" />
+                <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource IsOverBorderBrush}" />
+            </Trigger>
+            <Trigger Property="Button.IsPressed" Value="true">
+                <Setter TargetName="Border" Property="Background" Value="{StaticResource IsSelectedBackgroundBrush}" />
+                <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource IsSelectedBorderBrush}" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="LinkButton" TargetType="{x:Type Button}">
+        <TextBlock x:Name="Tb" Foreground="Blue">
+            <ContentPresenter  Margin="0" Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalAlignment}"></ContentPresenter>
+        </TextBlock>
+        <ControlTemplate.Triggers>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="Button.IsMouseOver" Value="True" />
+                    <Condition Property="Button.IsEnabled" Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="Tb" Property="TextDecorations" Value="Underline" />
+            </MultiTrigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="OptionButtonTemplate" TargetType="{x:Type my:a7OptionButton}">
+        <Border
+                    x:Name="Border"
+	                BorderBrush="Transparent"
+                    Background="White"
+                    CornerRadius="3"
+	                BorderThickness="{TemplateBinding BorderThickness}"
+                    HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                    Padding="{TemplateBinding Padding}" 
+                    Height="{TemplateBinding Height}"
+                    Width="{TemplateBinding Width}"
+                    Margin="{TemplateBinding Margin}">
+            <DockPanel Margin="5,8,5,8">
+                <Image DockPanel.Dock="Left" Source="{TemplateBinding Image}" Width="32" Height="32"
+                       RenderOptions.BitmapScalingMode="NearestNeighbor"
+                       RenderOptions.EdgeMode="Aliased"></Image>
+                <Image DockPanel.Dock="Left" Source="../Images/green_right.png" Width="32" Height="32"></Image>
+                <TextBlock Margin="5,0,0,0" TextWrapping="Wrap" Text="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" VerticalAlignment="Center"></TextBlock>
+                <!--<ContentPresenter Margin="0" Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" VerticalAlignment="Center"></ContentPresenter>-->
+            </DockPanel>
+
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="Button.IsMouseOver" Value="true">
+                <Setter TargetName="Border" Property="Background" Value="{StaticResource IsOverBackgroundBrush}" />
+                <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource IsOverBorderBrush}" />
+            </Trigger>
+            <Trigger Property="Button.IsPressed" Value="true">
+                <Setter TargetName="Border" Property="Background" Value="{StaticResource IsSelectedBackgroundBrush}" />
+                <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource IsSelectedBorderBrush}" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="BasicButtonTemplate" TargetType="{x:Type Button}">
+        <Border x:Name="border"  BorderThickness="0,0,0,0" Background="Transparent">
+            <Grid>
+                <ContentPresenter Margin="0" Content="{TemplateBinding Content}"></ContentPresenter>
+                <Rectangle x:Name="dim" Fill="White" Opacity="0.5" Visibility="Collapsed"></Rectangle>
+            </Grid>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="border" Property="Background" Value="{StaticResource IsOverBackgroundBrush}"></Setter>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter TargetName="dim" Property="Visibility" Value="Visible"></Setter>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="SearchButtonTemplate" TargetType="{x:Type Button}">
+        <Border x:Name="border" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1,0,0,0" Background="White">
+            <ContentPresenter Margin="0" Content="{TemplateBinding Content}"></ContentPresenter>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="border" Property="Background" Value="{StaticResource IsOverBackgroundBrush}"></Setter>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="PopupButtonTemplate" TargetType="{x:Type Button}">
+        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="White">
+            <ContentPresenter Margin="0" Content="{TemplateBinding Content}"></ContentPresenter>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="border" Property="Background" Value="{StaticResource IsOverBackgroundBrush}"></Setter>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="ToggleButtonMouseOverTemplate" TargetType="{x:Type ToggleButton}">
+        <Border
+                    x:Name="Border"
+	                BorderBrush="{TemplateBinding BorderBrush}"
+            Background="{TemplateBinding Background}"
+	                BorderThickness="{TemplateBinding BorderThickness}"
+                    Padding="{TemplateBinding Padding}" 
+                    Height="{TemplateBinding Height}"
+                    Margin="{TemplateBinding Margin}">
+            <ContentPresenter Margin="0" Content="{TemplateBinding Content}"></ContentPresenter>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="Button.IsMouseOver" Value="true">
+                <Setter TargetName="Border" Property="Background" Value="{StaticResource IsOverBackgroundBrush}" />
+                <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource IsOverBorderBrush}" />
+            </Trigger>
+            <Trigger Property="ToggleButton.IsChecked" Value="true">
+                <Setter TargetName="Border" Property="Background" Value="{StaticResource IsSelectedBackgroundBrush}" />
+                <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource IsSelectedBorderBrush}" />
+            </Trigger>
+            <Trigger Property="ToggleButton.IsMouseOver" Value="false">
+                <Setter Property="IsChecked" Value="false" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="ToggleButtonTemplate" TargetType="{x:Type ToggleButton}">
+        <Border
+                    x:Name="Border"
+	                BorderBrush="{TemplateBinding BorderBrush}"
+                    Background="{TemplateBinding Background}"
+	                BorderThickness="{TemplateBinding BorderThickness}"
+                    Padding="{TemplateBinding Padding}" 
+                    Height="{TemplateBinding Height}"
+                    Margin="{TemplateBinding Margin}">
+            <ContentPresenter Margin="0" Content="{TemplateBinding Content}"></ContentPresenter>
+        </Border>
+    </ControlTemplate>
+
+
+</ResourceDictionary>
+

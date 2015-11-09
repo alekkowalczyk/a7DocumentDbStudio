@@ -1,0 +1,42 @@
+﻿<Window x:Class="a7DocumentDbStudio.Dialogs.DocumentDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:a7DocumentDbStudio.Dialogs"
+        xmlns:cv="clr-namespace:a7DocumentDbStudio.Converters"
+        xmlns:cvj="clr-namespace:a7DocumentDbStudio.Converters.Json"
+         xmlns:a="http://icsharpcode.net/sharpdevelop/avalonedit"
+         xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+         xmlns:u="clr-namespace:a7DocumentDbStudio.Utils"
+        mc:Ignorable="d"
+        x:Name="me"
+        Title="Document" Height="555" Width="460">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Styles/ButtonsTemplates.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+            <cv:NegateBool x:Key="nb"></cv:NegateBool>
+            <cv:BoolToVisibility x:Key="bv"></cv:BoolToVisibility>
+            <cv:BoolToVisibilityReverse x:Key="bvn"></cv:BoolToVisibilityReverse>
+            <cvj:BoolToJsonSyntaxHighliting x:Key="bsh"></cvj:BoolToJsonSyntaxHighliting>
+            <!--<Style TargetType="Button">
+                <Setter Property="Template" Value="{StaticResource BasicButtonTemplate}"></Setter>
+            </Style>-->
+        </ResourceDictionary>
+    </Window.Resources>
+    <DockPanel>
+        <StackPanel Height="30" Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Right">
+            <Button Click="bCancel_Click" x:Name="bCancel" Width="70" Margin="5">Cancel</Button>
+            <Button Click="bOk_Click" x:Name="bOk" Width="70" Margin="5">Save</Button>
+        </StackPanel>
+        <Border BorderBrush="Gray" BorderThickness="1" Margin="10">
+        <a:TextEditor x:Name="jsonEditor" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"
+                                  SyntaxHighlighting="{Binding IsEditMode, Converter={StaticResource bsh}, ElementName=me}" Margin="0"  Padding="5"
+                                  VerticalAlignment="Stretch"
+                                  >
+        </a:TextEditor>
+        </Border>
+    </DockPanel>
+</Window>

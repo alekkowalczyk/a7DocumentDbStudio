@@ -1,0 +1,44 @@
+﻿<Window x:Class="a7DocumentDbStudio.Dialogs.SelectPropertyDlg"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:tk="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
+        xmlns:local="clr-namespace:a7DocumentDbStudio.Dialogs"
+        xmlns:ut="clr-namespace:a7DocumentDbStudio.Utils"
+        xmlns:en="clr-namespace:a7DocumentDbStudio.Enums"
+        mc:Ignorable="d"
+        x:Name="me"
+        Title="SelectPropertyDlg" Height="170" Width="500">
+    <Window.Resources>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="150"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock Margin="10" Grid.Row="1" Grid.Column="0">Property name</TextBlock>
+        <TextBlock Margin="10" Grid.Row="1" Grid.Column="1">Property type</TextBlock>
+        <tk:AutoCompleteBox   Grid.Row="2" Grid.Column="0"
+            Margin="10"
+            ItemsSource="{Binding Properties, ElementName=me}" Text="{Binding FieldNameText, ElementName=me, Mode=TwoWay}"
+            SelectedItem="{Binding SelectedProperty, ElementName=me, Mode=TwoWay}"></tk:AutoCompleteBox>
+        <ComboBox Margin="10" 
+                   ItemsSource="{Binding Source={ut:Enumeration {x:Type en:PropertyType}}}" 
+                   SelectedValue="{Binding SelectedPropertyType, ElementName=me, Mode=TwoWay}"
+                    DisplayMemberPath="Description" 
+                    SelectedValuePath="Value"
+                   Grid.Row="2" Grid.Column="1"
+                  ></ComboBox>
+        <StackPanel Grid.Row="4" Grid.ColumnSpan="2"  Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Click="Button_Click" Width="100" Margin="10">OK</Button>
+        </StackPanel>
+    </Grid>
+</Window>

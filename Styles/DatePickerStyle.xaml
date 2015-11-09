@@ -1,0 +1,147 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:conv="clr-namespace:a7DocumentDbStudio.Converters"
+                    xmlns:wpfx="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit/extended"
+                    xmlns:Controls="clr-namespace:a7DocumentDbStudio.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="CommonBrushes.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+    <conv:BoolToVisibility x:Key="b2v"></conv:BoolToVisibility>
+    <conv:BoolToVisibilityReverse x:Key="b2vr"></conv:BoolToVisibilityReverse>
+    <!-- DatePicker -->
+    <Style x:Key="DatePickerStyle"  TargetType="{x:Type Controls:a7DateTimePicker}">
+        <Setter Property="Foreground" Value="#FF333333" />
+        <!--<Setter Property="IsTodayHighlighted" Value="True" />-->
+        <!--<Setter Property="SelectedDateFormat" Value="Short" />-->
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Padding" Value="0"/>
+        <!--<Setter Property="BorderBrush">
+            <Setter.Value>
+                <LinearGradientBrush EndPoint=".5,0" StartPoint=".5,1">
+                    <GradientStop Color="#FFA3AEB9" Offset="0"/>
+                    <GradientStop Color="#FF8399A9" Offset="0.375"/>
+                    <GradientStop Color="#FF718597" Offset="0.375"/>
+                    <GradientStop Color="#FF617584" Offset="1"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>-->
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Controls:a7DateTimePicker}">
+                    <Border BorderBrush="{TemplateBinding BorderBrush}" 
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}" 
+                            Padding="{TemplateBinding Padding}">
+                        <Border.Child>
+                            <Grid x:Name="PART_Root"
+                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                <Grid.Resources>
+                                    <!-- Main DatePicker Brushes -->
+                                    <SolidColorBrush x:Key="DisabledBrush" Color="#A5FFFFFF" />
+                                    <!-- Button Template -->
+                                    <ControlTemplate x:Key="DropDownButtonTemplate" TargetType="Button">
+                                        <Grid>
+                                            <!--Start UI-->
+                                            <Grid Height="20" Width="20" 
+                                                  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" 
+                                                  Background="#11FFFFFF" 
+                                                  FlowDirection="LeftToRight">
+                                                <Border x:Name="Background" Width="18" HorizontalAlignment="Right" Background="Transparent"  BorderBrush="{TemplateBinding BorderBrush}" >
+                                                    <Image Source="../Images/calendar.png" HorizontalAlignment="Center" Width="16" Height="16"></Image>
+                                                </Border>
+                                            </Grid>
+                                            <!--End UI-->
+                                        </Grid>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="Button.IsMouseOver" Value="true">
+                                                <Setter TargetName="Background" Property="Background" Value="{StaticResource IsOverBackgroundBrush}" />
+                                                <Setter TargetName="Background" Property="BorderBrush" Value="{StaticResource IsOverBorderBrush}" />
+                                            </Trigger>
+                                            <Trigger Property="Button.IsPressed" Value="true">
+                                                <Setter TargetName="Background" Property="Background" Value="{StaticResource IsSelectedBackgroundBrush}" />
+                                                <Setter TargetName="Background" Property="BorderBrush" Value="{StaticResource IsSelectedBorderBrush}" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Grid.Resources>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Button x:Name="PART_Button" Grid.Row="0" Grid.Column="1"
+                                        Template="{StaticResource DropDownButtonTemplate}"
+                                        Foreground="{TemplateBinding Foreground}" 
+                                        Width="20"
+                                        Margin="0"
+                                        Focusable="False" 
+                                        Visibility="{Binding Path=IsReadOnly,Mode=TwoWay,RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource b2v}}"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Left" />
+                                <DatePickerTextBox x:Name="PART_TextBox"                                                                       
+                                            Grid.Row="0" Grid.Column="0" 
+                                                   Padding="0"
+                                                   Margin="0"
+                                                   Background="Transparent"
+                                            Foreground="{TemplateBinding Foreground}"
+                                            BorderThickness="0"
+                                                   BorderBrush="Transparent"
+                                            Text=" " 
+                                            FontFamily="{TemplateBinding FontFamily}"
+                                            FontSize="{TemplateBinding FontSize}"
+                                            FontStyle="{TemplateBinding FontStyle}"
+                                            HorizontalContentAlignment="Stretch"
+                                            VerticalContentAlignment="Center" >
+                                    <DatePickerTextBox.Style>
+                                        <Style TargetType="{x:Type DatePickerTextBox}">
+                                            <Setter Property="Control.Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate>
+                                                        <TextBox x:Name="PART_TextBox" Padding="0" BorderThickness="0" Margin="5,0,0,0"
+                                                             Text="{Binding Path=Text, RelativeSource={RelativeSource AncestorType={x:Type Controls:a7DateTimePicker}}}" />
+                                                        <ControlTemplate.Triggers>
+                                                            <Trigger Property="TextBox.IsEnabled" Value="False">
+                                                                <Setter TargetName="PART_TextBox" Property="Background" Value="Transparent" />
+                                                                <Setter TargetName="PART_TextBox" Property="Foreground" Value="Black" />
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </DatePickerTextBox.Style>
+                                </DatePickerTextBox>
+                                <Grid x:Name="PART_DisabledVisual" 
+                                      Opacity="0" 
+                                      IsHitTestVisible="False" 
+                                      Grid.Row="0" Grid.Column="0"
+                                      Grid.ColumnSpan="2">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Popup x:Name="PART_Popup" 
+                                           PlacementTarget="{Binding ElementName=PART_Button}"
+                                           Placement="Bottom" 
+                                           StaysOpen="False"
+                                           AllowsTransparency="True" />
+                                </Grid>
+                            </Grid>
+                        </Border.Child>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="DatePicker.IsEnabled" Value="False">
+                            <Setter TargetName="PART_Button" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                        <Trigger Property="DatePicker.IsMouseOver" Value="True">
+                            <Setter TargetName="PART_TextBox" Property="BorderBrush" Value="Transparent" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

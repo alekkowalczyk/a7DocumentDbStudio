@@ -1,0 +1,60 @@
+﻿<Window x:Class="a7DocumentDbStudio.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:a7DocumentDbStudio"
+        xmlns:v="clr-namespace:a7DocumentDbStudio.Views"
+        xmlns:vm="clr-namespace:a7DocumentDbStudio.ViewModel"
+        Icon="Images/a7.ico"
+        mc:Ignorable="d"
+        Title="a7 DocumentDb Studio" Height="750" Width="925">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles/CommonBrushes.xaml"/>
+                <ResourceDictionary Source="Styles/ButtonsTemplates.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="Button">
+                <Setter Property="Template" Value="{StaticResource BasicButtonTemplate}"></Setter>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="160"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.ColumnSpan="3">
+            <Button Command="{Binding AddAccountCommand}" Template="{StaticResource BasicButtonTemplate}"    Height="20"
+                        BorderBrush="Transparent"  BorderThickness="1">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="Images/connect.png" HorizontalAlignment="Center"   RenderOptions.BitmapScalingMode="NearestNeighbor"
+                                            RenderOptions.EdgeMode="Aliased" Width="12" Height="12" Margin="3"></Image>
+                    <TextBlock VerticalAlignment="Center">Connect</TextBlock>
+                </StackPanel>
+            </Button>
+            <!--
+            We can remove accout through context menu - no disconnect button for now
+            <Separator  Margin="4,0,4,0" Foreground="Aqua" Width="2"  Height="9"></Separator>
+            <Button Command="{Binding RemoveAccountCommand}" Template="{StaticResource BasicButtonTemplate}"  Height="20"
+                    
+                        BorderBrush="Transparent"  BorderThickness="1">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="Images/disconnect.png" HorizontalAlignment="Center"   RenderOptions.BitmapScalingMode="NearestNeighbor"
+                                            RenderOptions.EdgeMode="Aliased" Width="12" Height="12" Margin="3"></Image>
+                    <TextBlock VerticalAlignment="Center">Disconnect</TextBlock>
+                </StackPanel>
+            </Button>-->
+        </StackPanel>
+        <v:Explorer Grid.Column="0" Grid.Row="1" DataContext="{Binding Explorer}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"></v:Explorer>
+        <!--<Rectangle Grid.RowSpan="2" Grid.Column="1" VerticalAlignment="Stretch" Fill="LightBlue"></Rectangle>-->
+        <GridSplitter Grid.RowSpan="2" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="3"></GridSplitter>
+        <ContentControl Grid.Column="2" Grid.RowSpan="2" Content="{Binding CurrentWorkspace}"></ContentControl>
+    </Grid>
+</Window>

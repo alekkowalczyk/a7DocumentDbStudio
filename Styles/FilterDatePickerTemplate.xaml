@@ -1,0 +1,93 @@
+﻿<ResourceDictionary
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:my="clr-namespace:a7DocumentDbStudio.Controls"
+    xmlns:conv="clr-namespace:a7DocumentDbStudio.Converters"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                 xmlns:a7c="clr-namespace:a7DocumentDbStudio.Controls"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="CommonBrushes.xaml"/>
+        <ResourceDictionary Source="ButtonsTemplates.xaml"/>
+        <ResourceDictionary Source="ListBoxTemplates.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <conv:FilterFieldOperatorToShortString x:Key="tft2ss"></conv:FilterFieldOperatorToShortString>
+    <conv:FilterFieldOperatorToString x:Key="tft2s"></conv:FilterFieldOperatorToString>
+
+    <DataTemplate x:Key="FilterTextTypeItem">
+            <DockPanel>
+                <TextBlock DockPanel.Dock="Left"  Width="17" Grid.Column="0" Foreground="Gray" Text="{Binding Converter={StaticResource tft2ss}}"/>
+                <TextBlock Grid.Column="1" Text="{Binding Converter={StaticResource tft2s}}"/>
+            </DockPanel>
+    </DataTemplate>
+
+    <ControlTemplate x:Key="a7FilterDatePickerTemplate" TargetType="{x:Type my:FilterDatePicker}">
+        <DockPanel>
+            <TextBlock DockPanel.Dock="Bottom" Text="{Binding Path=PropertyType, RelativeSource={RelativeSource TemplatedParent}}" FontSize="8" HorizontalAlignment="Center"></TextBlock>
+            <Grid DockPanel.Dock="Right">
+                <ToggleButton 
+                    x:Name="button"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    Background="White"
+	                BorderThickness="{TemplateBinding BorderThickness}"
+                    Padding="3,0,3,0" 
+                    FontSize="9"
+                    Foreground="Gray"
+                    Height="18"
+                    Content="{TemplateBinding FilterType, Converter={StaticResource tft2ss}}"
+                    Template="{StaticResource ToggleButtonMouseOverTemplate}"
+                    IsChecked="{Binding Path=IsDropDownOpen,Mode=TwoWay,RelativeSource={RelativeSource TemplatedParent}}"
+                    Margin="0,0,0,0">
+
+                </ToggleButton>
+                <a7c:a7Popup  x:Name="filterTypePopup" PopupAnimation="Slide" AllowsTransparency="True" IsOpen="{TemplateBinding IsDropDownOpen}"
+                        Placement="Relative" HorizontalOffset="-60" VerticalOffset="15" >
+                    <Border BorderBrush="{StaticResource ShadowBorderBrush}" Effect="{StaticResource ShadowEffect}" >
+                        <ListBox Background="White" Foreground="Black" FontFamily="Segoe UI" 
+                             BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"
+                             Template="{StaticResource ListBoxTemplate}"
+                             HorizontalContentAlignment="Stretch"
+                             ItemTemplate="{StaticResource FilterTextTypeItem}"
+                             ItemsSource="{TemplateBinding AvailableFilterTypes}"
+                             SelectedItem="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=FilterType}"
+                             >
+                            <ListBox.ItemContainerStyle>
+                                <Style TargetType="{x:Type ListBoxItem}">
+                                    <Setter Property="ContentTemplate" Value="{StaticResource FilterTextTypeItem}" />
+                                    <Setter Property="Template" Value="{StaticResource ListBoxItemTemplate}"/>
+                                </Style>
+                            </ListBox.ItemContainerStyle>
+                        </ListBox>
+                    </Border>
+                </a7c:a7Popup>
+            </Grid>
+            <my:a7DateTimePicker x:Name="innerDatePicker"
+                DateTimeText="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Text, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                TwoDatesSelectable="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TwoDatesSelectable, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                FontSize="{TemplateBinding FontSize}" Padding="{TemplateBinding Padding}"
+                IsEnabled="{TemplateBinding IsEnabled}"
+                Height="18"
+                HasTime="{TemplateBinding HasTime}"
+                                 IsTextReadOnly="true"
+                                 VerticalAlignment="Top"
+                Margin="0,1,0,0"
+                BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}"
+                Foreground="{TemplateBinding Foreground}">
+            </my:a7DateTimePicker>
+        </DockPanel>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Value="Gray" Property="Foreground" />
+            </Trigger>
+            <Trigger Property="IsFocused" Value="True">
+                <Setter TargetName="innerDatePicker" Property="FocusManager.FocusedElement" Value="{Binding ElementName=innerDatePicker}" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+
+    </ControlTemplate>
+
+
+</ResourceDictionary>
+

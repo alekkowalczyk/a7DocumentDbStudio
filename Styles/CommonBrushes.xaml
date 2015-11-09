@@ -1,0 +1,108 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:PresentationOptions="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
+                    >
+    <SolidColorBrush x:Key="LightGrayBrush" Color="#F5F6F8"  ></SolidColorBrush>
+    <SolidColorBrush x:Key="BlueLabelBrush" Color="#577DA8"  ></SolidColorBrush>
+    <SolidColorBrush x:Key="OrangeBrush" Color="#FF6A00"  ></SolidColorBrush>
+    <SolidColorBrush x:Key="MainBackground" Color="#DCE2E8"  ></SolidColorBrush>
+    <LinearGradientBrush x:Key="IsOverBackgroundBrush"  EndPoint="0,1" StartPoint="0,0"  >
+        <GradientStop Color="#FDEEB1" Offset="0"/>
+        <GradientStop Color="#FBE389" Offset="0.6"/>
+        <GradientStop Color="#FCF3CF" Offset="1"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="IsOverBackgroundLightBrush"  EndPoint="0,1" StartPoint="0,0"  >
+        <GradientStop Color="#FCF9ED" Offset="0"/>
+        <GradientStop Color="#F9EEC5" Offset="0.6"/>
+        <GradientStop Color="#F9F6E8" Offset="1"/>
+    </LinearGradientBrush>
+    <SolidColorBrush x:Key="IsOverBorderBrush" Color="#FBE389"  ></SolidColorBrush>
+    <SolidColorBrush Color="#C7C8C9" x:Key="IsReadOnlyBorderBrush"  ></SolidColorBrush>
+    <LinearGradientBrush x:Key="IsSelectedBackgroundBrush" EndPoint="0,1" StartPoint="0,0"  >
+        <GradientStop Color="#FFDCEBFC" Offset="0"/>
+        <GradientStop Color="#FFC1DBFC" Offset="1"/>
+    </LinearGradientBrush>
+    <SolidColorBrush x:Key="IsSelectedBorderBrush" Color="#D9D9D9"  ></SolidColorBrush>
+    <SolidColorBrush x:Key="BorderBrush" Color="#C7C8C9"  ></SolidColorBrush>
+    <SolidColorBrush x:Key="DarkBorderBrush" Color="#ABADB3" ></SolidColorBrush>
+    <SolidColorBrush x:Key="ShadowBorderBrush" Color="#A5ACB7"  ></SolidColorBrush>
+    <DropShadowEffect x:Key="ShadowEffect" BlurRadius="4" ShadowDepth="0" Opacity="0.3" Color="#AC000000" />
+    <DropShadowEffect x:Key="OrangeShadowEffect" BlurRadius="8" ShadowDepth="0" Opacity="0.6" Color="#FF6A00" />
+    <SolidColorBrush x:Key="OuterInnerBorderBrush" Color="#D7EBFE"  ></SolidColorBrush>
+    <SolidColorBrush x:Key="LeftTopInnerBorderBrush" Color="Black"></SolidColorBrush>
+    <SolidColorBrush x:Key="RightBottomInnerBorderBrush" Color="#A9B8C7"></SolidColorBrush>
+    <!-- Common brushes used in various places (mainly ControlTemplates) -->
+    <!-- for now used in combo box template -->
+    <SolidColorBrush x:Key="ComboHighlightedOuterBorderBrush" Color="#EEC857"></SolidColorBrush>
+    <SolidColorBrush x:Key="ComboOuterBorderBrush" Color="#BBBFC4"></SolidColorBrush>
+    <SolidColorBrush x:Key="ComboPressedInnerBorderBrush" Color="#C2762B"></SolidColorBrush>
+    <SolidColorBrush x:Key="ComboInnerBorderBrush" Color="#FCFCFC"></SolidColorBrush>
+    <SolidColorBrush x:Key="ComboArrowBrush" Color="#586585"   />
+    <SolidColorBrush x:Key="ComboDisabledForegroundBrush" Color="#FF6d6d6d" />
+    <LinearGradientBrush x:Key="ComboArrowBackgroundBrush" StartPoint="0.5,0.0" EndPoint="0.5,1.0"  >
+        <GradientStop Color="#F7FAFC" Offset="0"/>
+        <GradientStop Color="#E7EAEE" Offset="1"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="ComboArrowHighlightedBackgoundBrush" StartPoint="0,0" EndPoint="0,1"  >
+        <GradientStop Color="#FBE594" Offset="0"/>
+        <GradientStop Color="White" Offset="1"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="ComboArrowPressedBackgroundBrush" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#FFE48A" Offset="0"/>
+        <GradientStop Color="#F8D172" Offset="1"/>
+    </LinearGradientBrush>
+
+    <SolidColorBrush x:Key="Combo2ControlBorderBrush" Color="#E5C365"/>
+    <SolidColorBrush x:Key="Combo2ArrowBrush" Color="Black" />
+    <SolidColorBrush x:Key="Combo2DisabledForegroundBrush" Color="#FF6d6d6d" />
+    <SolidColorBrush x:Key="Combo2DisabledBorderBrush" Color="#FFadb2b5" />
+    <LinearGradientBrush x:Key="Combo2ArrowBackgroundBrush" StartPoint="0.5,0.0" EndPoint="0.5,1.0">
+        <GradientStop Color="#FFFCF2" Offset="0"/>
+        <GradientStop Color="#FFECB5" Offset="1"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="Combo2PopupBackgroundBrush" StartPoint="0.5,0.0" EndPoint="0.5,1.0">
+        <GradientStop Color="#E9ECEE" Offset="0"/>
+        <GradientStop Color="#D0D7E2" Offset="1"/>
+    </LinearGradientBrush>
+
+    <SolidColorBrush x:Key="Combo2PopupBorderBrush" Color="#9BA7B7"></SolidColorBrush>
+    <SolidColorBrush x:Key="Combo2ArrowHighlightedBackgoundBrush" Color="#FFFCF4"></SolidColorBrush>
+    <SolidColorBrush x:Key="Combo2ArrowPressedBackgroundBrush" Color="#FFE8A6"></SolidColorBrush>
+
+    <Thickness x:Key="DialogHeaderBorderThikness" Left="0" Top="0" Right="0" Bottom="1"></Thickness>
+    <SolidColorBrush x:Key="DialogHeaderBorderBrush" Color="#A0A0A0"></SolidColorBrush>
+    <SolidColorBrush x:Key="DialogHeaderForegroundBrush" Color="Black"></SolidColorBrush>
+    <DrawingBrush x:Key="DialogHeaderBackgroundBrush" Stretch="None" TileMode="Tile" Viewport="0,0,6,6" ViewportUnits="Absolute" >
+        <!-- a drawing of 4 checkerboard tiles -->
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+
+                <!-- checkerboard background #314362 -->
+                <GeometryDrawing Brush="#BCC7D8">
+                    <GeometryDrawing.Geometry>
+                        <RectangleGeometry Rect="0,0,6,6" />
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+
+                <!-- two checkerboard foreground tiles 293754 36506B-->
+                <GeometryDrawing Brush="#ABBCD6">
+                    <GeometryDrawing.Geometry>
+                        <GeometryGroup>
+                            <RectangleGeometry Rect="0,0,1,1" />
+                            <RectangleGeometry Rect="3,3,1,1" />
+                        </GeometryGroup>
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+                <GeometryDrawing Brush="#CFD2D6">
+                    <GeometryDrawing.Geometry>
+                        <GeometryGroup>
+                            <RectangleGeometry Rect="0,1,1,1" />
+                            <RectangleGeometry Rect="3,4,1,1" />
+                        </GeometryGroup>
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+</ResourceDictionary>

@@ -1,0 +1,142 @@
+﻿<UserControl x:Class="a7DocumentDbStudio.Views.Workspaces.Collection"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:a7DocumentDbStudio.Views.Workspaces"
+             xmlns:c="clr-namespace:a7DocumentDbStudio.Controls"
+             xmlns:cv="clr-namespace:a7DocumentDbStudio.Converters"
+             xmlns:f="clr-namespace:a7DocumentDbStudio.Controls.FilterEditor"
+             xmlns:u="clr-namespace:a7DocumentDbStudio.Utils"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:a="http://icsharpcode.net/sharpdevelop/avalonedit"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="600">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../../Styles/CommonBrushes.xaml"/>
+                <ResourceDictionary Source="../../Styles/ButtonsTemplates.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="Button">
+                <Setter Property="Template" Value="{StaticResource BasicButtonTemplate}"></Setter>
+            </Style>
+            <cv:NegateBool x:Key="nb"></cv:NegateBool>
+            <cv:BoolToVisibility x:Key="bv"></cv:BoolToVisibility>
+            <cv:BoolToVisibilityReverse x:Key="bvr"></cv:BoolToVisibilityReverse>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.ColumnSpan="3">
+            <f:FilterEditorButton x:Name="feb" Visibility="{Binding Collection.IsSqlEditMode, Converter={StaticResource bvr}}" IsPopupMode="False" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Height="18"></f:FilterEditorButton>
+            <Separator Margin="4,0,4,0" VerticalAlignment="Stretch" Foreground="Aqua" Width="2" Height="9"></Separator>
+            <Button Command="{Binding RefreshCommand}" Template="{StaticResource BasicButtonTemplate}"  
+                        BorderBrush="Transparent"  BorderThickness="1">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="../../Images/refresh.png" HorizontalAlignment="Center" Width="12" Height="12"></Image>
+                    <TextBlock>Refresh</TextBlock>
+                </StackPanel>
+            </Button>
+            <Separator  Margin="4,0,4,0" Foreground="Aqua" Width="2"  Height="9"></Separator>
+            <c:AddColumnButton Properties="{Binding Collection.AvailableProperties}" SelectCommand="{Binding AddColumnCommand}"></c:AddColumnButton>
+            <Separator  Margin="4,0,4,0" Foreground="Aqua" Width="2"  Height="9"></Separator>
+            <Button Command="{Binding ShowHideSqlCommand}" Template="{StaticResource BasicButtonTemplate}"  
+                    Visibility="{Binding Collection.IsSqlEditMode, Converter={StaticResource bvr}}"
+                        BorderBrush="Transparent"  BorderThickness="1">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="../../Images/dropDownOpen.png" Visibility="{Binding IsSqlVisible, Converter={StaticResource bvr}}" HorizontalAlignment="Center" Width="12" Height="12"></Image>
+                    <TextBlock Visibility="{Binding IsSqlVisible, Converter={StaticResource bvr}}" >Show sql</TextBlock>
+                    <Image Source="../../Images/dropDownClose.png" Visibility="{Binding IsSqlVisible, Converter={StaticResource bv}}" HorizontalAlignment="Center" Width="12" Height="12"></Image>
+                    <TextBlock Visibility="{Binding IsSqlVisible, Converter={StaticResource bv}}" >Hide sql</TextBlock>
+                </StackPanel>
+            </Button>
+            <Separator  Margin="4,0,4,0" Foreground="Aqua" Width="2"  Height="9"></Separator>
+            <Button Command="{Binding CreateViewCommand}" Template="{StaticResource BasicButtonTemplate}"  
+                        BorderBrush="Transparent"  BorderThickness="1">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="../../Images/view.png" HorizontalAlignment="Center" Width="10" Height="10" Margin="3"></Image>
+                    <TextBlock>Create view</TextBlock>
+                </StackPanel>
+            </Button>
+            <Separator  Margin="4,0,4,0" Foreground="Aqua" Width="2"  Height="9"></Separator>
+            <Button Command="{Binding SaveViewCommand}" Template="{StaticResource BasicButtonTemplate}"  
+                    Visibility="{Binding IsView, Converter={StaticResource bv}}"
+                        BorderBrush="Transparent"  BorderThickness="1">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="../../Images/save.png" HorizontalAlignment="Center"   RenderOptions.BitmapScalingMode="NearestNeighbor"
+                                            RenderOptions.EdgeMode="Aliased" Width="12" Height="12" Margin="3"></Image>
+                    <TextBlock>Save view</TextBlock>
+                </StackPanel>
+            </Button>
+            <Separator Visibility="{Binding IsView, Converter={StaticResource bv}}"
+                       Margin="4,0,4,0" Foreground="Aqua" Width="2"  Height="9"></Separator>
+            <Button Command="{Binding DeleteViewCommand}" Template="{StaticResource BasicButtonTemplate}"  
+                    Visibility="{Binding IsView, Converter={StaticResource bv}}"
+                        BorderBrush="Transparent"  BorderThickness="1">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="../../Images/small_cancel.png" HorizontalAlignment="Center"   RenderOptions.BitmapScalingMode="NearestNeighbor"
+                                            RenderOptions.EdgeMode="Aliased" Width="12" Height="12" Margin="3"></Image>
+                    <TextBlock>Delete view</TextBlock>
+                </StackPanel>
+            </Button>
+            <Separator Visibility="{Binding IsView, Converter={StaticResource bv}}" Margin="4,0,4,0" Foreground="Aqua" Width="2"  Height="9"></Separator>
+            <Button Command="{Binding AddNewDocumentCommand}" Template="{StaticResource BasicButtonTemplate}"  
+                        BorderBrush="Transparent"  BorderThickness="1">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="../../Images/small_add.png" HorizontalAlignment="Center" Width="12" Height="12" Margin="3"></Image>
+                    <TextBlock>New document</TextBlock>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+        <c:CollectionGrid x:Name="cg" Grid.Row="1" MinWidth="80" Grid.Column="0" Collection="{Binding Collection}" SelectedItem="{Binding SelectedDocumentModel}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"></c:CollectionGrid>
+        <GridSplitter Grid.Row="1" Grid.Column="1" VerticalAlignment="Stretch" Width="3" Visibility="Collapsed"></GridSplitter>
+        <ContentControl Grid.Row="1" Grid.Column="2" Content="{Binding SelectedDocumentVM}"></ContentControl>
+        <GridSplitter Grid.Row="2" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" Height="3" Visibility="{Binding IsSqlVisible, Converter={StaticResource bv}}" ></GridSplitter>
+        <DockPanel Visibility="{Binding IsSqlVisible, Converter={StaticResource bv}}" Grid.Row="3" Grid.ColumnSpan="3" Height="300">
+            <DockPanel DockPanel.Dock="Top" Height="18">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Button Height="18" Width="100" Margin="0" Visibility="{Binding Collection.IsSqlEditMode, Converter={StaticResource bvr}}" Command="{Binding EditSqlCommand}" HorizontalAlignment="Right">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Image Source="../../Images/edit.png" Width="10" Height="10" Margin="0,0,4,0"></Image>
+                            <TextBlock>Sql edit mode</TextBlock>
+                        </StackPanel>
+                    </Button>
+                    <Button Height="18" Width="60" Margin="0" Visibility="{Binding Collection.IsSqlEditMode, Converter={StaticResource bv}}" Command="{Binding CancelEditSqlCommand}" HorizontalAlignment="Right">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Image Source="../../Images/small_cancel.png" Width="16" Height="16" Margin="0,0,4,0"></Image>
+                            <TextBlock>Cancel</TextBlock>
+                        </StackPanel>
+                    </Button>
+                    <Button Height="18" Width="60" Margin="0"  Visibility="{Binding Collection.IsSqlEditMode, Converter={StaticResource bv}}" Command="{Binding RefreshCommand}"  HorizontalAlignment="Right">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Image Source="../../Images/small_right.png" Width="16" Height="16" Margin="0,0,4,0"
+                                           RenderOptions.BitmapScalingMode="NearestNeighbor"
+                                            RenderOptions.EdgeMode="Aliased"
+                                           ></Image>
+                            <TextBlock>Execute</TextBlock>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </DockPanel>
+            <a:TextEditor x:Name="sqlEditor" WordWrap="True"  IsReadOnly="{Binding Collection.IsSqlEditMode, Converter={StaticResource nb}}" >
+                <i:Interaction.Behaviors>
+                    <u:AvalonEditBehaviour GiveMeTheText="{Binding Collection.SqlText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </i:Interaction.Behaviors>
+            </a:TextEditor>
+        </DockPanel>
+        <Grid Background="White" Opacity="0.7" Grid.ColumnSpan="3" Grid.RowSpan="4" Visibility="{Binding IsBusy, Converter={StaticResource bv}}">
+            <c:a7WaitSpinner LeaderBrush="{StaticResource OrangeBrush}" TailBrush="Black" Width="32" Height="32" Spin="{Binding IsBusy}"></c:a7WaitSpinner>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -35,6 +35,7 @@ namespace a7DocumentDbStudio.ViewModel.Explorer
             }
             else
             {
+                this.View = new CollectionViewModel();
                 IsView = false;
             }
             this.ContextMenuItems.Add(new MenuItemVM()

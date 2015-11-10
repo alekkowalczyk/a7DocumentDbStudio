@@ -135,6 +135,15 @@ namespace a7DocumentDbStudio.ViewModel
 
         private void updateSelectedViewInConfig()
         {
+            if (this.Workspace.ExpItem.View == null)
+                this.Workspace.ExpItem.View = new CollectionViewModel();
+            this.Workspace.ExpItem.View.Filter = this.Filter;
+            this.Workspace.ExpItem.View.SqlText = this.SqlText;
+            this.Workspace.ExpItem.View.Columns = this.Columns.ToList();
+            this.Workspace.ExpItem.View.CollectionName = this._model.Name;
+            this.Workspace.ExpItem.View.IsSqlEditMdoe = this.IsSqlEditMode;
+            if(this.IsSqlEditMode)
+                this.Workspace.ExpItem.View.IsSqlVisible = true;
             // Commented out because we don't need to save the current view settings anymore. (it was used when current view settings where saved to restore on next run)
             //Config.Instance.UpdateSelectedCollectionView(vm =>
             //{

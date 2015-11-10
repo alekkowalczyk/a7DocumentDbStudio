@@ -8,7 +8,7 @@
         xmlns:vm="clr-namespace:a7DocumentDbStudio.ViewModel"
         Icon="Images/a7.ico"
         mc:Ignorable="d"
-        Title="a7 DocumentDb Studio - v.0.8.0" Height="790" Width="985">
+        Title="a7 DocumentDb Studio - v.0.8.0" Height="790" Width="1185">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

@@ -8,7 +8,7 @@
         xmlns:vm="clr-namespace:a7DocumentDbStudio.ViewModel"
         Icon="Images/a7.ico"
         mc:Ignorable="d"
-        Title="a7 DocumentDb Studio" Height="750" Width="925">
+        Title="a7 DocumentDb Studio - v.0.8.0" Height="790" Width="985">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -22,7 +22,7 @@
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="160"></ColumnDefinition>
+            <ColumnDefinition Width="190"></ColumnDefinition>
             <ColumnDefinition Width="Auto"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>

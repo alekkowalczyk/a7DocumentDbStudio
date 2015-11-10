@@ -153,7 +153,7 @@ namespace a7DocumentDbStudio.Controls.FilterEditor
                     if (filter.HasActiveFilter)
                     {
                         this.Filter = filter;
-                        if(_collection != null && _collection.AvailableProperties.Any(ap => ap.Path ==(filter as FltAtomExprData).Field))
+                        if(_collection != null)// why was this here?: && _collection.AvailableProperties.Any(ap => ap.Path ==(filter as FltAtomExprData).Field))
                             this.SetAtomFilter(new FilterElementEditor(_collection, filter as FltAtomExprData, this.IsPopupMode) { 
                                 IsReadOnly = this.IsReadOnly,
                                 EditorContext = this.EditorContext

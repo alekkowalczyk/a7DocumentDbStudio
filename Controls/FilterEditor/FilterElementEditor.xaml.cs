@@ -87,7 +87,6 @@ namespace a7DocumentDbStudio.Controls.FilterEditor
             this.IsPopupMode = isPopupMode;
             InitializeComponent();
             this.propSelector.SelectedPropertyChanged += PropSelector_SelectedPropertyChanged;
-            var field = collection.AvailableProperties.FirstOrDefault(ap => ap.Path == filter.Field);
             Filter = filter;
             this.propSelector.Properties = collection.AvailableProperties;
             this.propSelector.SelectedProperty = new PropertyDefinitionModel
@@ -97,7 +96,7 @@ namespace a7DocumentDbStudio.Controls.FilterEditor
                 Type = filter.PropertyType
             };
             IsWithcollectionIdFilter = false;
-            setField(field);
+            setField(this.propSelector.SelectedProperty);
         }
 
         private void PropSelector_SelectedPropertyChanged(object sender, EventArgs e)

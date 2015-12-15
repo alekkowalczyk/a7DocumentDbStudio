@@ -77,8 +77,9 @@
     <ApplicationIcon>a7.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="a7ExtensionMethods">
-      <HintPath>..\..\a7ExtensionMethods\a7ExtensionMethods\bin\Release\a7ExtensionMethods.dll</HintPath>
+    <Reference Include="a7ExtensionMethods, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\a7ExtensionMethods.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.AvalonEdit, Version=5.0.1.0, Culture=neutral, PublicKeyToken=9cc39be672370310, processorArchitecture=MSIL">
       <HintPath>packages\AvalonEdit.5.0.2\lib\Net40\ICSharpCode.AvalonEdit.dll</HintPath>

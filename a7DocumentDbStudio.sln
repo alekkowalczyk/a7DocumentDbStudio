@@ -1,9 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "a7DocumentDbStudio", "a7DocumentDbStudio.csproj", "{26F2B932-3999-422B-A92C-311D8F04E40B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "References", "References", "{21414CE9-0A01-4C3A-A9AD-6EFECE1BE2A7}"
+	ProjectSection(SolutionItems) = preProject
+		a7ExtensionMethods.dll = a7ExtensionMethods.dll
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
